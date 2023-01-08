@@ -1,0 +1,38 @@
+﻿@model SubdivisionFactView
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы уверены что хотите удалить запись?</h3>
+<div>
+    <h4>Выполненный план работ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+             <label asp-for="subdivisionFactDate" class="control-label">Дата выполненной работы</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subdivisionFactDate)
+        </dd>
+        <dt class = "col-sm-2">
+             <label asp-for="subdivisionFactIndex" class="control-label">Рейтинг предприятия</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subdivisionFactIndex)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="subdivision" class="control-label">Название предприятия</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subdivision)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="subdivisionFactId"/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернутся к списку</a>
+    </form>
+</div>

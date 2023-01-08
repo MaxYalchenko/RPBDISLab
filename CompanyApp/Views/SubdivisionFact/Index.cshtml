@@ -1,0 +1,52 @@
+﻿@using CompanyApp.ViewModels;
+@model IEnumerable<SubdivisionFactView>
+
+
+@{
+    ViewData["Title"] = "План предприятий";
+}
+
+<h1>Выполненный план предприятий</h1>
+
+<h4>
+    @Html.ActionLink("Создать план", "Create", "SubdivisionFact")
+</h4>
+@using (Html.BeginForm())
+{
+    <p>Поиск по имени предприятия: </p>
+    @Html.TextBox("searchSubdivisionFactName", ViewBag.CurrentFilter as string)
+    <p><input type="submit" value="Применить"/></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата выполненного плана
+            </th>
+            <th>
+                Индекс предприятий
+            </th>
+             <th>
+                Название предприятия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{   
+              
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.subdivisionFactDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.subdivisionFactIndex)</td>
+            <td>@Html.DisplayFor(modelItem => item.subdivision)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.subdivisionFactId">Изменить</a>
+                <a asp-action="Details" asp-route-id="@item.subdivisionFactId">Детали записи</a>
+                <a asp-action="Delete" asp-route-id="@item.subdivisionFactId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

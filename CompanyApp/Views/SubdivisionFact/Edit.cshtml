@@ -1,0 +1,44 @@
+﻿@model CompanyApp.Models.SubdivisionFact
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Изменить запись</h1>
+
+<h4>Выполненный план работ</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="subdivisionFactId" />
+            <div class="form-group">
+                <label asp-for="subdivisionFactDate" class="control-label">Дата выполненной работы</label>
+                <input asp-for="subdivisionFactDate" class="form-control" />
+                <span asp-validation-for="subdivisionFactDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="subdivisionFactIndex" class="control-label">Рейтинг предприятия</label>
+                <input asp-for="subdivisionFactIndex" class="form-control" />
+                <span asp-validation-for="subdivisionFactIndex" class="text-danger"></span>
+            </div>
+        <div class="form-group">
+            
+                <label asp-for="subdivisionId" class="control-label">Название предприятия</label>
+                @Html.DropDownListFor(model => model.subdivisionId, ViewBag.subdivisions as SelectList)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

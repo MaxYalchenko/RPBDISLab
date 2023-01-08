@@ -1,0 +1,44 @@
+﻿@model CompanyApp.Models.Workpeople
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание записи</h1>
+
+<h4>Рабочие предприятий</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="peopleName" class="control-label">Имя рабочего</label>
+                <input asp-for="peopleName" class="form-control" />
+                <span asp-validation-for="peopleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amountPeople" class="control-label">Рейтинг рабочего</label>
+                <input asp-for="amountPeople" class="form-control" />
+                <span asp-validation-for="amountPeople" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achievements" class="control-label">Достижения</label>
+                <input asp-for="Achievements" class="form-control" />
+                <span asp-validation-for="Achievements" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="subdivisionId" class="control-label">Предприятие</label>
+               @Html.DropDownListFor(model => model.subdivisionId, (IEnumerable<SelectListItem>)ViewBag.subdivisions)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+

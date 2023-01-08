@@ -1,0 +1,38 @@
+﻿@model CompanyApp.Models.Subdivision
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание записи</h1>
+
+<h4>Предприятия</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="subdivisionName" class="control-label">Название предприятия</label>
+                <input asp-for="subdivisionName" class="form-control" />
+                <span asp-validation-for="subdivisionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amountSubdivision" class="control-label">Рейтинг предприятия</label>
+                <input asp-for="amountSubdivision" class="form-control" />
+                <span asp-validation-for="amountSubdivision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернутся к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

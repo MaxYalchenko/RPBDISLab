@@ -1,0 +1,52 @@
+﻿@using CompanyApp.ViewModels;
+@model IEnumerable<SubdivisionPlanView>
+
+
+@{
+    ViewData["Title"] = "План предприятий";
+}
+
+<h1>План предприятий</h1>
+
+<h4>
+    @Html.ActionLink("Создать план", "Create", "SubdivisionPlan")
+</h4>
+@using (Html.BeginForm())
+{
+    <p>Поиск по имени предприятия: </p>
+    @Html.TextBox("searchSubdivisionPlanName", ViewBag.CurrentFilter as string)
+    <p><input type="submit" value="Применить"/></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата плана
+            </th>
+            <th>
+                Индекс предприятий
+            </th>
+             <th>
+                Название предприятия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{   
+              
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.subdivisionPlanDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.subdivisionPlanIndex)</td>
+            <td>@Html.DisplayFor(modelItem => item.subdivision)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.subdivisionPlanId">Изменить</a>
+                <a asp-action="Details" asp-route-id="@item.subdivisionPlanId">Детали записи</a>
+                <a asp-action="Delete" asp-route-id="@item.subdivisionPlanId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

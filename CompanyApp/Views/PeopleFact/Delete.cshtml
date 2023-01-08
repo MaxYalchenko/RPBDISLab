@@ -1,0 +1,38 @@
+﻿@model PeopleFactView
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы уверены что хотите удалить запись?</h3>
+<div>
+    <h4>Выполнение плана работ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+             <label asp-for="peopleFactDate" class="control-label">Дата выполненной работы</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.peopleFactDate)
+        </dd>
+        <dt class = "col-sm-2">
+             <label asp-for="peopleFactIndex" class="control-label">Рейтинг сотрудника</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.peopleFactIndex)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="workpeople" class="control-label">Имя сотрудника</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workpeople)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="peopleFactId"/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернутся к списку</a>
+    </form>
+</div>

@@ -1,0 +1,63 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common
+@using CompanyApp.ViewModels
+@model X.PagedList.IPagedList<Subdivision>
+
+
+@{
+    ViewData["Title"] = "Предприятия";
+}
+
+<h1>Предприятия</h1>
+
+<p>
+    <a asp-action="Create">Создать предприятие</a>
+</p>
+@using (Html.BeginForm())
+{
+    <p>Введите название предприятия: </p>
+    @Html.TextBox("searchSubdivisionName", ViewBag.CurrentFilter as string)
+    <p><input type="submit" value="Применить"/></p>
+}
+<a asp-action="Index" asp-route-reset="true">
+    Сбросить
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@ViewBag.SubdivisionName">
+                    Название предприятия
+                </a>
+            </th>
+             <th>
+                <a asp-action="Index" asp-route-sortState="@ViewBag.SubdivisionAmount">
+                    Рейтинг предприятия
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.subdivisionName)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.amountSubdivision)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.subdivisionId">Изменить запись</a> |
+                <a asp-action="Details" asp-route-id="@item.subdivisionId">Детали записи</a> |
+                <a asp-action="Delete" asp-route-id="@item.subdivisionId">Удалить запись</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortState = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }), new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+})

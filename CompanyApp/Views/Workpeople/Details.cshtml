@@ -1,0 +1,43 @@
+﻿@model WorkpeopleView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали записи</h1>
+
+<div>
+    <h4>Рабочие люди</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+             <label asp-for="peopleName" class="control-label">Имя рабочего</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.peopleName)
+        </dd>
+          <dt class = "col-sm-2">
+                <label asp-for="amountPeople" class="control-label">Рейтинг рабочего</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.amountPeople)
+        </dd>
+         <dt class = "col-sm-2">
+             <label asp-for="Achievements" class="control-label">Достижения</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Achievements)
+        </dd>
+        <dt class = "col-sm-2">
+             <label asp-for="subdivision" class="control-label">Предприятие</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subdivision)
+
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.workpeopleId">Изменить запись</a> |
+    <a asp-action="Index">Вернутся к списку</a>
+</div>

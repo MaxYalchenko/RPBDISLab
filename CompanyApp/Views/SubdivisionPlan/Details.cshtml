@@ -1,0 +1,36 @@
+﻿@model SubdivisionPlanView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали записи</h1>
+
+<div>
+    <h4>План работ</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+             <label asp-for="subdivisionPlanDate" class="control-label">Дата запланированной работы</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subdivisionPlanDate)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="subdivisionPlanIndex" class="control-label">Рейтинг предприятия</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subdivisionPlanIndex)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="subdivision" class="control-label">Название предприятия</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subdivision)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.subdivisionPlanId">Изменить</a> |
+    <a asp-action="Index">Вернутся к списку</a>
+</div>

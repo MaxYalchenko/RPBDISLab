@@ -1,0 +1,38 @@
+﻿@model PeoplePlan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание записи</h1>
+
+<h4>План работ</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="peoplePlanDate"  class="control-label">Дата запланированной работы</label>
+                <input asp-for="peoplePlanDate" class="form-control" />
+                <span asp-validation-for="peoplePlanDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="peoplePlanIndex" class="control-label">Рейтинг сотрудника</label>
+                <input asp-for="peoplePlanIndex" class="form-control" />
+                <span asp-validation-for="peoplePlanIndex" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="workPeopleId" class="control-label">Имя сотрудника</label>
+                @Html.DropDownListFor(model => model.workPeopleId, ViewBag.workPeoples as SelectList)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернутся к списку</a>
+</div>

@@ -1,0 +1,52 @@
+﻿@using CompanyApp.ViewModels;
+@model IEnumerable<PeoplePlanView>
+
+
+@{
+    ViewData["Title"] = "План рабочих";
+}
+
+<h1>План рабочих</h1>
+
+<h4>
+    @Html.ActionLink("Создать план", "Create", "PeoplePlan")
+</h4>
+@using (Html.BeginForm())
+{
+    <p>Поиск по имени рабочего: </p>
+    @Html.TextBox("searchPeoplePlanName", ViewBag.CurrentFilter as string)
+    <p><input type="submit" value="Применить"/></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата плана
+            </th>
+            <th>
+                Индекс рабочего
+            </th>
+             <th>
+                Имя рабочего
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{   
+              
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.peoplePlanDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.peoplePlanIndex)</td>
+            <td>@Html.DisplayFor(modelItem => item.workpeople)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.peoplePlanId">Изменить</a>
+                <a asp-action="Details" asp-route-id="@item.peoplePlanId">Детали записи</a>
+                <a asp-action="Delete" asp-route-id="@item.peoplePlanId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

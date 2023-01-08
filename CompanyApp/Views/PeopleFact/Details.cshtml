@@ -1,0 +1,36 @@
+﻿@model PeopleFactView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали записи</h1>
+
+<div>
+    <h4>Выполнение плана работ</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+             <label asp-for="peopleFactDate" class="control-label">Дата выполненной работы</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.peopleFactDate)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="peopleFactIndex" class="control-label">Рейтинг сотрудника</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.peopleFactIndex)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="workpeople" class="control-label">Имя сотрудника</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workpeople)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.peopleFactId">Изменить</a> |
+    <a asp-action="Index">Вернутся к списку</a>
+</div>

@@ -1,0 +1,38 @@
+﻿@model PeoplePlanView
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы уверены что хотите удалить запись?</h3>
+<div>
+    <h4>План работ</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+             <label asp-for="peoplePlanDate" class="control-label">Дата запланированной работы</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.peoplePlanDate)
+        </dd>
+        <dt class = "col-sm-2">
+             <label asp-for="peoplePlanIndex" class="control-label">Рейтинг сотрудника</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.peoplePlanIndex)
+        </dd>
+        <dt class="col-sm-2">
+             <label asp-for="workpeople" class="control-label">Имя сотрудника</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workpeople)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="peoplePlanId"/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернутся к списку</a>
+    </form>
+</div>

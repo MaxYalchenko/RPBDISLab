@@ -1,0 +1,30 @@
+﻿@model CompanyApp.Models.Subdivision
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали записи</h1>
+
+<div>
+    <h4>Предприятия</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+             <label asp-for="subdivisionName" class="control-label">Название предприятия</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subdivisionName)
+        </dd>
+            <dt class="col-sm-2">
+             <label asp-for="amountSubdivision" class="control-label">Рейтинг предприятия</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.amountSubdivision)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.subdivisionId">Изменить запись</a> |
+    <a asp-action="Index">Вернутся к списку</a>
+</div>
